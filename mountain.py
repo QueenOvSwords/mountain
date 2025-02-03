@@ -10,9 +10,7 @@ print(ascii_description)
 print(ascii_banner)
 
 def load_terms(filename):
-
     terms_dict = {}
-    acronyms_dict = {}
 
     with open(filename, "r", encoding="utf-8") as file:
         for line in file:
@@ -25,9 +23,8 @@ def load_terms(filename):
                 term, acronym, definition = term.strip(), acronym.strip(), definition.strip()
 
                 terms_dict[term] = (acronym, definition)
-                acronyms_dict[acronym] = (term, definition)
 
-    return terms_dict, acronyms_dict
+    return terms_dict
 
 def quiz(terms):
     shuffled_terms = list(terms.items())
@@ -75,7 +72,7 @@ def choose_file():
 
 def main_menu():
     file_name = choose_file()
-    terms, acronyms = load_terms(file_name)
+    terms = load_terms(file_name)
     quiz(terms)
 
 main_menu()
